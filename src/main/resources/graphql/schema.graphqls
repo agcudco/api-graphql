@@ -1,0 +1,32 @@
+type Mutation{
+    guardarProducto(productoRequest:ProductoRequest):Producto,
+    actualizarProducto(id:Int,productoRequest:ProductoRequest):Producto,
+    eliminarProducto(id : Int) : String
+}
+type Query{
+    listarProductos:[Producto],
+    listarProductoPorId(id:Int):Producto,
+    listarCategorias:[Categoria]
+    listarCategoriaPorId(id:Int):Categoria
+}
+
+type Producto{
+    id:Int,
+    nombre: String,
+    precio:Float,
+    stock:Int,
+    categoria: Categoria
+}
+
+type Categoria{
+    id:Int,
+    name:String,
+    productos: [Producto]
+}
+
+input ProductoRequest{
+    nombre: String,
+    precio:Float,
+    stock:Int,
+    categoriaId:Int
+}
